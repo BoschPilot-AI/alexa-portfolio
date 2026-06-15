@@ -15,19 +15,10 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-
-/* STARS */
 canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-
-/* CURSOR GLOW */
 #cursor-glow{position:fixed;pointer-events:none;z-index:999;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,120,0.07) 0%,transparent 70%);transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0}
-
-/* NOISE OVERLAY */
 body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:256px 256px}
-
 .wrap{max-width:1120px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,16,0.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--mono);font-size:15px;color:var(--text);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
@@ -40,44 +31,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,16,0.75)
 .nav-links a:hover::after{width:100%}
 .nav-cta{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;background:var(--pink);color:#fff;padding:8px 18px;border-radius:2px;text-decoration:none;transition:opacity 0.2s,transform 0.15s;display:inline-block}
 .nav-cta:hover{opacity:0.85;transform:translateY(-1px)}
-
 section{padding:100px 0;position:relative;z-index:2}
-
-/* REVEAL ANIMATION */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
-
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink);margin-bottom:20px}
 .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--pink)}
 .eyebrow-v{color:var(--violet)}
 .eyebrow-v::before{background:var(--violet)}
-
 h1{font-size:clamp(44px,7vw,82px);font-weight:700;line-height:1.05;letter-spacing:-0.02em}
 h2{font-size:clamp(34px,5vw,58px);font-weight:700;line-height:1.1;letter-spacing:-0.01em}
 h3{font-size:20px;font-weight:600;margin-bottom:8px}
-
-/* GLITCH TEXT */
 .glitch{position:relative;display:inline-block}
 .glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
 .glitch::before{color:var(--violet);clip-path:polygon(0 0,100% 0,100% 35%,0 35%);animation:glitch-top 4s infinite linear;opacity:0}
 .glitch::after{color:var(--pink);clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);animation:glitch-bot 4s infinite linear;opacity:0}
 @keyframes glitch-top{0%,89%,100%{opacity:0;transform:none}90%{opacity:0.7;transform:translate(-2px,0)}92%{transform:translate(2px,0)}94%{opacity:0}}
 @keyframes glitch-bot{0%,91%,100%{opacity:0;transform:none}92%{opacity:0.7;transform:translate(2px,0)}94%{transform:translate(-2px,0)}96%{opacity:0}}
-
-/* BUTTONS */
-.btn-pink{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:0.01em;transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s;border:none;cursor:pointer;position:relative;overflow:hidden}
+.btn-pink{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:0.01em;transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s;border:none;cursor:pointer;position:relative;overflow:hidden;font-family:var(--sans)}
 .btn-pink::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.15);opacity:0;transition:opacity 0.2s}
 .btn-pink:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,45,120,0.35)}
 .btn-pink:hover::after{opacity:1}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-p);color:var(--pink);padding:14px 28px;border-radius:100px;font-size:14px;text-decoration:none;transition:border-color 0.2s,background 0.2s,transform 0.15s}
 .btn-ghost:hover{background:var(--pink-dim);transform:translateY(-2px)}
-.btn-violet{display:inline-flex;align-items:center;gap:8px;background:var(--violet);color:#fff;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s}
+.btn-violet{display:inline-flex;align-items:center;gap:8px;background:var(--violet);color:#fff;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s;border:none;cursor:pointer;font-family:var(--sans)}
 .btn-violet:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(155,89,255,0.35)}
-
-/* HERO */
 #hero{padding:156px 0 100px;min-height:100vh;display:flex;align-items:center}
 .hero-grid{display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:center}
 .hero-avail{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;border:1px solid var(--border-p);color:var(--muted);padding:7px 16px;border-radius:100px;margin-bottom:36px}
@@ -85,21 +65,14 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(255,45,120,0.5)}50%{box-shadow:0 0 0 5px rgba(255,45,120,0)}}
 .hero-sub{font-size:18px;color:var(--muted);line-height:1.7;max-width:480px;margin-top:20px}
 .hero-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
-
-/* HERO CARD */
 .hero-card{border:1px solid var(--border-v);border-radius:12px;background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:20px;transition:border-color 0.3s,transform 0.3s}
 .hero-card:hover{border-color:rgba(155,89,255,0.5);transform:translateY(-4px)}
 .hero-card-stat{display:flex;flex-direction:column;gap:4px}
 .hero-card-num{font-size:40px;font-weight:700;font-family:var(--mono);color:var(--violet);line-height:1}
 .hero-card-label{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
 .hero-card-divider{height:1px;background:var(--border)}
-
-/* COUNTER ANIMATION */
-.count-up{display:inline-block}
-
-/* PROJECTS */
-.projects-grid{display:flex;flex-direction:column;gap:0}
-.proj{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:48px 0;border-bottom:1px solid var(--border);align-items:start;transition:background 0.3s;border-radius:4px;padding-left:0;padding-right:0}
+.projects-grid{display:flex;flex-direction:column}
+.proj{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:48px 0;border-bottom:1px solid var(--border);align-items:start;transition:background 0.3s;border-radius:4px}
 .proj:last-child{border-bottom:none}
 .proj:hover{background:rgba(255,45,120,0.03)}
 .proj-index{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.08em;padding-top:6px;transition:color 0.2s}
@@ -109,10 +82,8 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 .proj-role{font-size:12px;color:var(--muted);margin-bottom:14px}
 .proj-desc{color:var(--muted);font-size:15px;line-height:1.75;max-width:640px;margin-bottom:20px}
 .tag-row{display:flex;flex-wrap:wrap;gap:8px}
-.tag{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 12px;border-radius:2px;transition:border-color 0.2s,color 0.2s}
+.tag{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 12px;border-radius:2px;transition:border-color 0.2s}
 .proj:hover .tag{border-color:rgba(255,45,120,0.2)}
-
-/* SERVICES */
 .services-bento{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
 .svc{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:32px;transition:transform 0.25s,border-color 0.25s}
 .svc:hover{transform:translateY(-4px)}
@@ -125,13 +96,9 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 .svc:hover .svc-icon{transform:scale(1.15) rotate(-5deg)}
 .svc h3{margin-bottom:10px}
 .svc p{color:var(--muted);font-size:15px;line-height:1.7}
-
-/* TOOLS */
 .tools-row{display:flex;flex-wrap:wrap;gap:10px}
 .tool{font-family:var(--mono);font-size:11px;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:2px;letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s,transform 0.15s,background 0.2s;cursor:default}
 .tool:hover{border-color:var(--violet);color:#C4A8FF;transform:translateY(-2px);background:var(--violet-dim)}
-
-/* PRICING */
 .pricing-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;margin:48px auto 0}
 .price-card{background:var(--surface);padding:48px 40px;border-radius:16px;border:1px solid var(--border);transition:transform 0.25s,border-color 0.25s}
 .price-card:hover{transform:translateY(-6px)}
@@ -145,8 +112,6 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 .price-features{list-style:none;margin:0 0 36px}
 .price-features li{font-size:14px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
 .price-features li::before{content:'·';color:var(--pink);font-size:20px;line-height:1;flex-shrink:0}
-
-/* ABOUT */
 .about-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .about-text{font-size:17px;color:var(--muted);line-height:1.8}
 .about-text p+p{margin-top:16px}
@@ -156,9 +121,9 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 .current-item-title{font-size:15px;font-weight:600;margin-bottom:4px}
 .current-item-desc{font-size:13px;color:var(--muted)}
 
-/* CONTACT */
-.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.contact-btns{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+/* CONTACT SECTION */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.contact-info-btns{display:flex;flex-direction:column;gap:12px;margin-top:32px}
 .contact-btn{display:flex;align-items:center;gap:16px;border:1px solid var(--border);border-radius:10px;padding:20px 24px;text-decoration:none;color:var(--text);background:var(--surface);transition:border-color 0.2s,background 0.2s,transform 0.2s}
 .contact-btn:hover{border-color:var(--pink);background:var(--pink-dim);transform:translateX(4px)}
 .contact-btn.violet:hover{border-color:var(--violet);background:var(--violet-dim)}
@@ -167,8 +132,25 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 .contact-btn-label{font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px}
 .contact-btn-val{font-size:15px;font-weight:500}
 
-/* DECO RING */
-.deco-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+/* CONTACT FORM */
+.contact-form-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px}
+.form-title{font-size:18px;font-weight:600;margin-bottom:6px}
+.form-sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.form-group label{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:var(--sans);font-size:15px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%;resize:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,45,120,0.1)}
+.form-group select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237A7090' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-group select option{background:var(--surface);color:var(--text)}
+.form-submit{width:100%;padding:16px;font-size:16px;font-weight:600;margin-top:8px;border-radius:10px}
+.form-success{display:none;text-align:center;padding:32px 20px}
+.form-success-icon{font-size:48px;margin-bottom:16px}
+.form-success-title{font-size:20px;font-weight:700;margin-bottom:8px;color:var(--pink)}
+.form-success-sub{font-size:14px;color:var(--muted)}
+
+.deco-wrap{display:none}
 .deco-ring{width:280px;height:280px;border-radius:50%;border:1px solid var(--border-p);display:flex;align-items:center;justify-content:center;animation:spin-slow 20s linear infinite}
 .deco-ring-inner{width:180px;height:180px;border-radius:50%;border:1px solid var(--border-v);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;text-align:center;animation:spin-slow 20s linear infinite reverse}
 .deco-name{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text)}
@@ -179,26 +161,22 @@ h3{font-size:20px;font-weight:600;margin-bottom:8px}
 @keyframes orbit-dot{from{transform:translate(-50%,-50%) rotate(0deg) translateX(140px)}to{transform:translate(-50%,-50%) rotate(360deg) translateX(140px)}}
 @keyframes orbit-dot-v{from{transform:translate(-50%,-50%) rotate(0deg) translateX(90px)}to{transform:translate(-50%,-50%) rotate(360deg) translateX(90px)}}
 
-/* SCROLL PROGRESS */
 #scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--pink);z-index:200;width:0%;transition:width 0.1s linear}
-
-/* FOOTER */
+.section-border{border-top:1px solid var(--border)}
 footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-index:2}
 .footer-inner{max-width:1120px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .footer-copy{font-family:var(--mono);font-size:11px;color:var(--muted)}
 
-/* SECTION DIVIDERS */
-.section-border{border-top:1px solid var(--border)}
-
 @media(max-width:768px){
-  .hero-grid,.about-split,.contact-inner{grid-template-columns:1fr}
+  .hero-grid,.about-split,.contact-grid{grid-template-columns:1fr}
   .hero-card{display:none}
   .proj{grid-template-columns:1fr}
   .proj-index{display:none}
   .services-bento,.pricing-row{grid-template-columns:1fr;max-width:100%}
-  .deco-wrap{display:none}
+  .form-row{grid-template-columns:1fr}
   .nav-links{display:none}
   .wrap,.nav-inner,.footer-inner{padding-left:20px;padding-right:20px}
+  .contact-form-wrap{padding:24px}
 }
 </style>
 </head>
@@ -208,7 +186,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 <div id="cursor-glow"></div>
 <div id="scroll-bar"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">Alexa<span>.</span>Teano</a>
@@ -217,12 +194,12 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:alexandra.teano3@gmail.com" class="nav-cta">Get in Touch</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="wrap">
     <div class="hero-grid">
@@ -263,119 +240,43 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects" class="section-border">
   <div class="wrap">
     <div class="eyebrow reveal">Selected Work</div>
     <h2 class="reveal reveal-delay-1">Featured Projects</h2>
     <p class="reveal reveal-delay-2" style="color:var(--muted);margin-top:14px;max-width:560px">Real systems built with real outcomes — each one reducing manual work and improving efficiency.</p>
     <div class="projects-grid" style="margin-top:56px">
-
-      <div class="proj reveal">
-        <div class="proj-index">01 / 05</div>
-        <div>
-          <div class="proj-badge">★ Featured</div>
-          <h3>Kohi — AI Voice Receptionist for Dental Clinics</h3>
-          <div class="proj-client">BoschPilot · boschpilot.com</div>
-          <div class="proj-role">Role: Builder & Designer · AI Voice System + Website</div>
-          <p class="proj-desc">Built an AI voice assistant for dental clinics to handle front-desk calls autonomously — reducing missed calls and manual scheduling. Developed the full product website in Framer with copy, pricing, FAQ, and demo CTA.</p>
-          <div class="tag-row"><span class="tag">AI Voice</span><span class="tag">Framer</span><span class="tag">Automation</span><span class="tag">Product Design</span></div>
-        </div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-index">02 / 05</div>
-        <div>
-          <h3>Web Form Automation System</h3>
-          <div class="proj-client">Workflow Automation Project</div>
-          <div class="proj-role">Role: Automation Developer · Form + Workflow</div>
-          <p class="proj-desc">Built an automated form workflow that reduced manual data handling and improved submission accuracy and speed — eliminating repetitive manual steps entirely.</p>
-          <div class="tag-row"><span class="tag">n8n</span><span class="tag">Web Forms</span><span class="tag">Workflow Automation</span></div>
-        </div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-index">03 / 05</div>
-        <div>
-          <h3>Multi-Channel Review Request Automation</h3>
-          <div class="proj-client">Automation Project</div>
-          <div class="proj-role">Role: Automation Developer · Multi-Channel Outreach</div>
-          <p class="proj-desc">Created an automated review request workflow that delivered consistent outreach across multiple channels, improving follow-up consistency and feedback collection without any manual sending.</p>
-          <div class="tag-row"><span class="tag">n8n</span><span class="tag">Multi-Channel</span><span class="tag">Automation</span></div>
-        </div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-index">04 / 05</div>
-        <div>
-          <h3>RSS-to-LinkedIn Content Automation</h3>
-          <div class="proj-client">Content Automation Project</div>
-          <div class="proj-role">Role: Automation Developer · Content Pipeline</div>
-          <p class="proj-desc">Implemented a workflow that turned RSS content updates into consistent, formatted LinkedIn posts — reducing manual effort and supporting a reliable hands-free publishing cadence.</p>
-          <div class="tag-row"><span class="tag">n8n</span><span class="tag">LinkedIn</span><span class="tag">RSS</span><span class="tag">Content Automation</span></div>
-        </div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-index">05 / 05</div>
-        <div>
-          <h3>BoschPilot Brand Website</h3>
-          <div class="proj-client">BoschPilot · boschpilot.com</div>
-          <div class="proj-role">Role: Designer & Developer · Website Development</div>
-          <p class="proj-desc">Designed and built a professional product website in Framer — full page structure, responsive layout, pricing tiers, FAQ, and content flow — to create a clear, conversion-focused web presence.</p>
-          <div class="tag-row"><span class="tag">Framer</span><span class="tag">Web Design</span><span class="tag">UI/UX</span><span class="tag">Copywriting</span></div>
-        </div>
-      </div>
-
+      <div class="proj reveal"><div class="proj-index">01 / 05</div><div><div class="proj-badge">★ Featured</div><h3>Kohi — AI Voice Receptionist for Dental Clinics</h3><div class="proj-client">BoschPilot · boschpilot.com</div><div class="proj-role">Role: Builder & Designer · AI Voice System + Website</div><p class="proj-desc">Built an AI voice assistant for dental clinics to handle front-desk calls autonomously — reducing missed calls and manual scheduling. Developed the full product website in Framer with copy, pricing, FAQ, and demo CTA.</p><div class="tag-row"><span class="tag">AI Voice</span><span class="tag">Framer</span><span class="tag">Automation</span><span class="tag">Product Design</span></div></div></div>
+      <div class="proj reveal"><div class="proj-index">02 / 05</div><div><h3>Web Form Automation System</h3><div class="proj-client">Workflow Automation Project</div><div class="proj-role">Role: Automation Developer · Form + Workflow</div><p class="proj-desc">Built an automated form workflow that reduced manual data handling and improved submission accuracy and speed — eliminating repetitive manual steps entirely.</p><div class="tag-row"><span class="tag">n8n</span><span class="tag">Web Forms</span><span class="tag">Workflow Automation</span></div></div></div>
+      <div class="proj reveal"><div class="proj-index">03 / 05</div><div><h3>Multi-Channel Review Request Automation</h3><div class="proj-client">Automation Project</div><div class="proj-role">Role: Automation Developer · Multi-Channel Outreach</div><p class="proj-desc">Created an automated review request workflow that delivered consistent outreach across multiple channels, improving follow-up consistency and feedback collection without any manual sending.</p><div class="tag-row"><span class="tag">n8n</span><span class="tag">Multi-Channel</span><span class="tag">Automation</span></div></div></div>
+      <div class="proj reveal"><div class="proj-index">04 / 05</div><div><h3>RSS-to-LinkedIn Content Automation</h3><div class="proj-client">Content Automation Project</div><div class="proj-role">Role: Automation Developer · Content Pipeline</div><p class="proj-desc">Implemented a workflow that turned RSS content updates into consistent, formatted LinkedIn posts — reducing manual effort and supporting a reliable hands-free publishing cadence.</p><div class="tag-row"><span class="tag">n8n</span><span class="tag">LinkedIn</span><span class="tag">RSS</span><span class="tag">Content Automation</span></div></div></div>
+      <div class="proj reveal"><div class="proj-index">05 / 05</div><div><h3>BoschPilot Brand Website</h3><div class="proj-client">BoschPilot · boschpilot.com</div><div class="proj-role">Role: Designer & Developer · Website Development</div><p class="proj-desc">Designed and built a professional product website in Framer — full page structure, responsive layout, pricing tiers, FAQ, and content flow — to create a clear, conversion-focused web presence.</p><div class="tag-row"><span class="tag">Framer</span><span class="tag">Web Design</span><span class="tag">UI/UX</span><span class="tag">Copywriting</span></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="section-border">
   <div class="wrap">
     <div class="eyebrow-v eyebrow reveal">What I Do</div>
     <h2 class="reveal reveal-delay-1">Services</h2>
     <p class="reveal reveal-delay-2" style="color:var(--muted);margin-top:14px">If your business has repetitive operations, there's almost always a way to automate them.</p>
     <div class="services-bento">
-      <div class="svc accent-p reveal">
-        <span class="svc-icon">⚡</span>
-        <h3>Workflow Automation</h3>
-        <p>End-to-end n8n automation systems that connect your tools, eliminate manual steps, and run on autopilot — triggered by schedules, webhooks, or user actions.</p>
-      </div>
-      <div class="svc accent-v reveal reveal-delay-1">
-        <span class="svc-icon">🤖</span>
-        <h3>AI Integration</h3>
-        <p>AI-powered workflows and voice systems that improve how your business communicates, processes information, and handles repetitive decisions — automatically.</p>
-      </div>
-      <div class="svc reveal reveal-delay-2">
-        <span class="svc-icon">🌐</span>
-        <h3>Website Development</h3>
-        <p>Clean, professional websites built in Framer — designed to communicate your value clearly, work on every device, and support your business goals from day one.</p>
-      </div>
-      <div class="svc reveal reveal-delay-3">
-        <span class="svc-icon">📋</span>
-        <h3>Form & Process Automation</h3>
-        <p>Automated form and data workflows that reduce manual handling, minimize errors, and keep your operations running without bottlenecks.</p>
-      </div>
+      <div class="svc accent-p reveal"><span class="svc-icon">⚡</span><h3>Workflow Automation</h3><p>End-to-end n8n automation systems that connect your tools, eliminate manual steps, and run on autopilot — triggered by schedules, webhooks, or user actions.</p></div>
+      <div class="svc accent-v reveal reveal-delay-1"><span class="svc-icon">🤖</span><h3>AI Integration</h3><p>AI-powered workflows and voice systems that improve how your business communicates, processes information, and handles repetitive decisions — automatically.</p></div>
+      <div class="svc reveal reveal-delay-2"><span class="svc-icon">🌐</span><h3>Website Development</h3><p>Clean, professional websites built in Framer — designed to communicate your value clearly, work on every device, and support your business goals from day one.</p></div>
+      <div class="svc reveal reveal-delay-3"><span class="svc-icon">📋</span><h3>Form & Process Automation</h3><p>Automated form and data workflows that reduce manual handling, minimize errors, and keep your operations running without bottlenecks.</p></div>
     </div>
     <div style="margin-top:56px">
       <div class="eyebrow-v eyebrow reveal">Tech Stack</div>
       <div class="tools-row reveal reveal-delay-1">
-        <span class="tool">n8n</span>
-        <span class="tool">Framer</span>
-        <span class="tool">AI Voice Tools</span>
-        <span class="tool">LinkedIn Automation</span>
-        <span class="tool">Web Forms</span>
-        <span class="tool">OpenAI</span>
-        <span class="tool">RSS Automation</span>
-        <span class="tool">Workflow Platforms</span>
+        <span class="tool">n8n</span><span class="tool">Framer</span><span class="tool">AI Voice Tools</span>
+        <span class="tool">LinkedIn Automation</span><span class="tool">Web Forms</span>
+        <span class="tool">OpenAI</span><span class="tool">RSS Automation</span><span class="tool">Workflow Platforms</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="section-border">
   <div class="wrap">
     <div class="eyebrow reveal">Pricing</div>
@@ -393,7 +294,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <li>Basic documentation</li>
           <li>Email support for 14 days</li>
         </ul>
-        <a href="mailto:alexandra.teano3@gmail.com" class="btn-pink" style="width:100%;justify-content:center;border-radius:8px">Get Started ↗</a>
+        <a href="#contact" class="btn-pink" style="width:100%;justify-content:center;border-radius:8px">Get Started ↗</a>
       </div>
       <div class="price-card reveal reveal-delay-2">
         <div class="price-name">Custom</div>
@@ -407,13 +308,12 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <li>Full docs + team walkthrough</li>
           <li>Priority support + retainer option</li>
         </ul>
-        <a href="mailto:alexandra.teano3@gmail.com" class="btn-violet" style="width:100%;justify-content:center;border-radius:8px">Let's Talk ↗</a>
+        <a href="#contact" class="btn-violet" style="width:100%;justify-content:center;border-radius:8px">Let's Talk ↗</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="section-border">
   <div class="wrap">
     <div class="eyebrow reveal">About Me</div>
@@ -439,20 +339,23 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 <!-- CONTACT -->
 <section id="contact" class="section-border">
   <div class="wrap">
-    <div class="contact-inner">
-      <div>
-        <div class="eyebrow reveal">Get in Touch</div>
-        <h2 class="reveal reveal-delay-1">Let's build something <span style="color:var(--pink)">efficient.</span></h2>
-        <p class="reveal reveal-delay-2" style="color:var(--muted);margin-top:16px;font-size:17px;line-height:1.7">I'm available for freelance projects involving automation, AI integrations, and website development. Reach out and let's talk about what we can build together.</p>
-        <div class="contact-btns">
-          <a href="mailto:alexandra.teano3@gmail.com" class="contact-btn reveal reveal-delay-2">
+    <div class="eyebrow reveal">Get in Touch</div>
+    <h2 class="reveal reveal-delay-1">Let's build something <span style="color:var(--pink)">efficient.</span></h2>
+    <p class="reveal reveal-delay-2" style="color:var(--muted);margin-top:14px;max-width:560px;margin-bottom:56px">I'm available for freelance projects involving automation, AI integrations, and website development. Fill in the form or reach out directly.</p>
+
+    <div class="contact-grid">
+      <!-- LEFT: direct links -->
+      <div class="reveal reveal-delay-1">
+        <p style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);margin-bottom:20px">Reach me directly</p>
+        <div class="contact-info-btns">
+          <a href="mailto:alexandra.teano3@gmail.com" class="contact-btn">
             <div class="contact-btn-icon">✉</div>
             <div>
               <div class="contact-btn-label">Email</div>
               <div class="contact-btn-val">alexandra.teano3@gmail.com</div>
             </div>
           </a>
-          <a href="https://boschpilot.com" class="contact-btn violet reveal reveal-delay-3">
+          <a href="https://boschpilot.com" target="_blank" class="contact-btn violet">
             <div class="contact-btn-icon" style="background:var(--violet-dim);border-color:var(--border-v)">🌐</div>
             <div>
               <div class="contact-btn-label">Website</div>
@@ -460,22 +363,74 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
             </div>
           </a>
         </div>
+        <div style="margin-top:40px;padding:24px;border:1px solid var(--border);border-radius:10px;background:var(--surface)">
+          <p style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Response time</p>
+          <p style="font-size:15px;font-weight:600;color:var(--text)">Within 24 hours</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">I respond to all inquiries within one business day.</p>
+        </div>
       </div>
-      <div class="deco-wrap reveal reveal-delay-2">
-        <div class="deco-dot"></div>
-        <div class="deco-dot deco-dot-v"></div>
-        <div class="deco-ring">
-          <div class="deco-ring-inner">
-            <div class="deco-name">Alexa Teano</div>
-            <div class="deco-role">Automation · Design</div>
+
+      <!-- RIGHT: form -->
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <div id="form-content">
+          <div class="form-title">Send me a message</div>
+          <div class="form-sub">Tell me about your project and I'll get back to you shortly.</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="f-name" placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="f-email" placeholder="jane@company.com" autocomplete="email">
+            </div>
           </div>
+
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select id="f-service">
+              <option value="" disabled selected>Select a service...</option>
+              <option>Workflow Automation</option>
+              <option>AI Integration</option>
+              <option>Website Development</option>
+              <option>Form & Process Automation</option>
+              <option>Custom / Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Budget Range</label>
+            <select id="f-budget">
+              <option value="" disabled selected>Select a range...</option>
+              <option>Under $500</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $3,000</option>
+              <option>$3,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="f-message" rows="5" placeholder="Tell me about your project, what you want to automate, or any questions you have..."></textarea>
+          </div>
+
+          <div id="form-error" style="display:none;font-size:13px;color:var(--pink);margin-bottom:12px;font-family:var(--mono)"></div>
+
+          <button class="btn-pink form-submit" onclick="submitForm()">Send Message ↗</button>
+        </div>
+
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">✦</div>
+          <div class="form-success-title">Message sent!</div>
+          <div class="form-success-sub">Thanks for reaching out. I'll get back to you within 24 hours at <strong id="success-email"></strong>.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span class="footer-copy">© 2026 Alexa Teano. All rights reserved.</span>
@@ -485,92 +440,67 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
 <script>
 /* STARS */
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-let stars = [];
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = document.body.scrollHeight;
-}
-function init() {
-  stars = [];
-  const n = Math.floor(canvas.width * canvas.height / 4500);
-  for (let i = 0; i < n; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.3 + 0.2,
-      a: Math.random() * 0.45 + 0.08,
-      tw: Math.random() * Math.PI * 2,
-      spd: Math.random() * 0.0004 + 0.0003,
-      col: Math.random() < 0.4 ? '255,45,120' : '155,89,255'
-    });
-  }
-}
-function draw(t) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  stars.forEach(s => {
-    const a = s.a * (0.5 + 0.5 * Math.sin(s.tw + t * s.spd));
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${s.col},${a * 0.5})`;
-    ctx.fill();
-  });
-  requestAnimationFrame(draw);
-}
-resize(); init(); requestAnimationFrame(draw);
-window.addEventListener('resize', () => { resize(); init(); });
-setTimeout(() => { resize(); init(); }, 600);
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let stars=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=document.body.scrollHeight}
+function init(){stars=[];const n=Math.floor(canvas.width*canvas.height/4500);for(let i=0;i<n;i++)stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.3+0.2,a:Math.random()*0.45+0.08,tw:Math.random()*Math.PI*2,spd:Math.random()*0.0004+0.0003,col:Math.random()<0.4?'255,45,120':'155,89,255'})}
+function draw(t){ctx.clearRect(0,0,canvas.width,canvas.height);stars.forEach(s=>{const a=s.a*(0.5+0.5*Math.sin(s.tw+t*s.spd));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(${s.col},${a*0.5})`;ctx.fill()});requestAnimationFrame(draw)}
+resize();init();requestAnimationFrame(draw);
+window.addEventListener('resize',()=>{resize();init()});
+setTimeout(()=>{resize();init()},600);
 
 /* CURSOR GLOW */
-const glow = document.getElementById('cursor-glow');
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  glow.style.left = mouseX + 'px';
-  glow.style.top = mouseY + 'px';
-  glow.style.opacity = '1';
-});
-document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+const glow=document.getElementById('cursor-glow');
+document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1'});
+document.addEventListener('mouseleave',()=>{glow.style.opacity='0'});
 
-/* SCROLL PROGRESS BAR */
-const scrollBar = document.getElementById('scroll-bar');
-window.addEventListener('scroll', () => {
-  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-  scrollBar.style.width = pct + '%';
-});
+/* SCROLL PROGRESS */
+const scrollBar=document.getElementById('scroll-bar');
+window.addEventListener('scroll',()=>{const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;scrollBar.style.width=pct+'%'});
 
 /* SCROLL REVEAL */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
-reveals.forEach(el => observer.observe(el));
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
+reveals.forEach(el=>observer.observe(el));
 
 /* COUNT UP */
-function animateCount(el) {
-  const target = parseInt(el.dataset.target);
-  if (target === 0) { el.textContent = '0'; return; }
-  const duration = 1200;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(ease * target);
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-const countObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.count-up').forEach(animateCount);
-      countObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.hero-card').forEach(el => countObserver.observe(el));
-</script>
+function animateCount(el){const target=parseInt(el.dataset.target);if(target===0){el.textContent='0';return}const start=performance.now();function step(now){const p=Math.min((now-start)/1200,1);const ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.count-up').forEach(animateCount);countObs.unobserve(e.target)}})},{threshold:0.3});
+document.querySelectorAll('.hero-card').forEach(el=>countObs.observe(el));
 
+/* FORM SUBMIT — opens mailto with prefilled content */
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const service=document.getElementById('f-service').value;
+  const budget=document.getElementById('f-budget').value;
+  const message=document.getElementById('f-message').value.trim();
+  const errEl=document.getElementById('form-error');
+
+  // Validate
+  if(!name){errEl.textContent='Please enter your name.';errEl.style.display='block';return}
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return}
+  if(!message){errEl.textContent='Please enter a message.';errEl.style.display='block';return}
+  errEl.style.display='none';
+
+  const subject=encodeURIComponent(`Portfolio Inquiry — ${service||'General'} — ${name}`);
+  const body=encodeURIComponent(
+    `Hi Alexa,\n\nMy name is ${name} and I found you through your portfolio.\n\nService needed: ${service||'Not specified'}\nBudget range: ${budget||'Not specified'}\n\n${message}\n\nBest,\n${name}\n${email}`
+  );
+
+  // Open mailto
+  window.location.href=`mailto:alexandra.teano3@gmail.com?subject=${subject}&body=${body}`;
+
+  // Show success
+  document.getElementById('success-email').textContent=email;
+  document.getElementById('form-content').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+
+/* Allow Enter in fields to submit (except textarea) */
+['f-name','f-email','f-service','f-budget'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener('keydown',e=>{if(e.key==='Enter')submitForm()});
+});
+</script>
 </body>
 </html>
